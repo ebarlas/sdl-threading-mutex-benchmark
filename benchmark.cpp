@@ -229,10 +229,13 @@ int main() {
     int runs = 4;
     int numRectsArr[] = {100, 1'000, 5'000, 10'000, 20'000, 50'000};
     auto fns = {runSingleThreadNoMutex, runMultiThreadedMultiMutex, runMultiThreadedSingleMutex};
+    auto labels = {"single-threaded no-mutex", "multi-threaded mutex-per-particle", "multi-threaded single-mutex"};
 
     Runner runner(width, height, duration);
 
+    auto label = std::begin(labels);
     for (auto fn : fns) {
+        SDL_Log("Running %s test case...", *label);
         for (int numRects : numRectsArr) {
             std::vector<int> fpsvec;
             for (int i = 0; i < runs; i++) {
@@ -242,6 +245,7 @@ int main() {
             }
             SDL_Log("numRects=%d, avgFps=%d", numRects, avgMinExcluded(fpsvec));
         }
+        label++;
     }
 
     return 0;

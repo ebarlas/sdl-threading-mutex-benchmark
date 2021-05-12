@@ -24,7 +24,7 @@ The application can be broken into several parts:
   * Particle positions are incremented
 * Model read
   * Particle positions are read by render thread
-* Model Render
+* Model render
   * Particles are rendered with `SDL_RenderFillRects`
 
 There are three test modes:
@@ -39,6 +39,16 @@ There are three test modes:
   * Updates happen in dedicated update threads
   * All particle position are _updated_ within a single broad mutex section by the update thread
   * All particle positions are _read_ within a single broad mutex section by the render thread
+
+# Build
+
+On a Unix-like system:
+
+```
+cmake .
+make
+./benchmark
+```
 
 # Results
 
