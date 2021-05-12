@@ -1,6 +1,7 @@
 #include <functional>
 #include <vector>
 #include <numeric>
+#include <algorithm>
 #include "SDL.h"
 
 struct Runner {
